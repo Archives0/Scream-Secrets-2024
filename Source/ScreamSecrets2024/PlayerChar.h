@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
+#include "Food.h"
 #include "PlayerChar.generated.h"
 
 UCLASS()
@@ -11,19 +12,34 @@ class SCREAMSECRETS2024_API APlayerChar : public ACharacter
 {
 	GENERATED_BODY()
 
-public:
-	// Sets default values for this character's properties
-	APlayerChar();
-
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
+	void Death();
 
 public:	
-	// Called every frame
+	APlayerChar();
 	virtual void Tick(float DeltaTime) override;
-
-	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Player")
+	int health{};
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Player")
+	int hunger{};
+
+	UFUNCTION(BlueprintCallable, Category = "Player")
+	void RestoreHunger(int value);
+
+	UFUNCTION(BlueprintCallable, Category = "Player")
+	void DepleteHunger(int value);
+
+	UFUNCTION(BlueprintCallable, Category = "Player")
+	void RestoreHealth(int value);
+
+	UFUNCTION(BlueprintCallable, Category = "Player")
+	void DepleteHealth(int value);
+
+	UFUNCTION(BlueprintCallable, Category = "Player")
+	void EatFood(AFood* food);
 };

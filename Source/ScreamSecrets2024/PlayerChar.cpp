@@ -32,3 +32,50 @@ void APlayerChar::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 
 }
 
+void APlayerChar::RestoreHunger(int value)
+{
+	if (hunger + value > 100)
+		hunger = 100;
+	else
+		hunger += value;
+}
+
+void APlayerChar::DepleteHunger(int value)
+{
+	if (hunger - value < 0)
+	{
+		DepleteHealth(value - hunger);
+		hunger = 0;
+	}
+	else
+		hunger -= value;
+}
+
+void APlayerChar::RestoreHealth(int value)
+{
+	if (health + value > 100)
+		health = 100;
+	else
+		health += value;
+}
+
+void APlayerChar::DepleteHealth(int value)
+{
+	if (health - value < 0)
+	{
+		health = 0;
+		Death();
+	}
+	else
+		health -= value;
+}
+
+void APlayerChar::Death()
+{
+	UE_LOG(LogTemp, Display, TEXT("I am dead lol"));
+}
+
+void APlayerChar::EatFood(AFood* food)
+{
+	
+}
