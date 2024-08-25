@@ -8,14 +8,20 @@ APlayerChar::APlayerChar()
 {
  	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
-
 }
 
 // Called when the game starts or when spawned
 void APlayerChar::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	gameManager = Cast<UGameManager>(GetGameInstance());
+
+	if (gameManager)
+	{
+		UE_LOG(LogTemp, Display, TEXT("Game Manager cast successful"));
+	}
+	else
+		UE_LOG(LogTemp, Error, TEXT("Casting failed"));
 }
 
 // Called every frame
@@ -75,7 +81,7 @@ void APlayerChar::Death()
 	UE_LOG(LogTemp, Display, TEXT("I am dead lol"));
 }
 
-void APlayerChar::EatFood(AFood* food)
-{
-	
-}
+//void APlayerChar::EatFood(AFood* food)
+//{
+//	
+//}

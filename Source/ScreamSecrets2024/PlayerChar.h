@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Food.h"
+#include "GameManager.h"
 #include "PlayerChar.generated.h"
 
 UCLASS()
@@ -28,6 +29,9 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Player")
 	int hunger{};
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Game Management")
+	UGameManager* gameManager{};
+
 	UFUNCTION(BlueprintCallable, Category = "Player")
 	void RestoreHunger(int value);
 
@@ -40,6 +44,6 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Player")
 	void DepleteHealth(int value);
 
-	UFUNCTION(BlueprintCallable, Category = "Player")
-	void EatFood(AFood* food);
+	/*UFUNCTION(BlueprintCallable, Category = "Player")
+	void EatFood(AFood* food);*/
 };
