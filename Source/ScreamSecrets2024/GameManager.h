@@ -22,10 +22,20 @@ class SCREAMSECRETS2024_API UGameManager : public UGameInstance
 	GENERATED_BODY()
 	
 public:
+	UGameManager();
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Game State")
 	EGameState CurrentState = EGameState::Wandering;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Game State")
-	int Day = 1;
+	int CurrentDay = 1;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Game State")
+	TMap<int, int> DayRounds;
+
+	UFUNCTION(BlueprintCallable, Category = "Game State")
+	void ProgressDay();
+
+	UFUNCTION(BlueprintCallable, Category = "Game State")
+	int GetRoundsCount();
 };

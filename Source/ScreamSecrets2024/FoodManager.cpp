@@ -25,3 +25,8 @@ void AFoodManager::Tick(float DeltaTime)
 
 }
 
+void AFoodManager::IncrementRound()
+{
+	CurrentRound++;
+}
+

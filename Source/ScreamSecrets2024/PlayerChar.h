@@ -6,6 +6,7 @@
 #include "GameFramework/Character.h"
 #include "Food.h"
 #include "GameManager.h"
+#include "PlayerStatManager.h"
 #include "PlayerChar.generated.h"
 
 UCLASS()
@@ -22,6 +23,9 @@ public:
 	APlayerChar();
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Player")
+	APlayerStatManager* PlayerStats{};
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Player")
 	int health{};
@@ -43,7 +47,4 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Player")
 	void DepleteHealth(int value);
-
-	/*UFUNCTION(BlueprintCallable, Category = "Player")
-	void EatFood(AFood* food);*/
 };

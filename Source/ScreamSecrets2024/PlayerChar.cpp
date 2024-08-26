@@ -15,6 +15,7 @@ void APlayerChar::BeginPlay()
 {
 	Super::BeginPlay();
 	gameManager = Cast<UGameManager>(GetGameInstance());
+	PlayerStats = Cast<APlayerStatManager>(GetPlayerState());
 
 	if (gameManager)
 	{
@@ -80,8 +81,3 @@ void APlayerChar::Death()
 {
 	UE_LOG(LogTemp, Display, TEXT("I am dead lol"));
 }
-
-//void APlayerChar::EatFood(AFood* food)
-//{
-//	
-//}
