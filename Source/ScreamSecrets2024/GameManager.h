@@ -38,4 +38,34 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Game State")
 	int GetRoundsCount();
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Player")
+	TArray<AItem*> HeldItems{};
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Player")
+	int CurrentHealth{};
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Player")
+	int CurrentHunger{};
+
+	UFUNCTION(BlueprintCallable, Category = "Player")
+	void RestoreHealth(int value);
+
+	UFUNCTION(BlueprintCallable, Category = "Player")
+	void DepleteHealth(int value);
+
+	UFUNCTION(BlueprintCallable, Category = "Player")
+	void RestoreHunger(int value);
+
+	UFUNCTION(BlueprintCallable, Category = "Player")
+	void DepleteHunger(int value);
+
+	UFUNCTION(BlueprintCallable, Category = "Player")
+	void PlayerDeath();
+
+	UFUNCTION(BlueprintCallable, Category = "Player")
+	void ClearItems();
+
+	UFUNCTION(BlueprintCallable, Category = "Player")
+	void AddItems(AItem* item);
 };

@@ -14,10 +14,10 @@ APlayerChar::APlayerChar()
 void APlayerChar::BeginPlay()
 {
 	Super::BeginPlay();
-	gameManager = Cast<UGameManager>(GetGameInstance());
+	GameManager = Cast<UGameManager>(GetGameInstance());
 	PlayerStats = Cast<APlayerStatManager>(GetPlayerState());
 
-	if (gameManager)
+	if (GameManager)
 	{
 		UE_LOG(LogTemp, Display, TEXT("Game Manager cast successful"));
 	}
@@ -75,6 +75,16 @@ void APlayerChar::DepleteHealth(int value)
 	}
 	else
 		health -= value;
+}
+
+void APlayerChar::AddItem(AItem* Item)
+{
+
+}
+
+void APlayerChar::ClearItems()
+{
+
 }
 
 void APlayerChar::Death()

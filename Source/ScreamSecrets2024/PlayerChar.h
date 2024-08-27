@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "Food.h"
+#include "Item.h"
 #include "GameManager.h"
 #include "PlayerStatManager.h"
 #include "PlayerChar.generated.h"
@@ -20,6 +21,9 @@ protected:
 	void Death();
 
 public:	
+
+	TArray<AItem> HeldItems{};
+
 	APlayerChar();
 	virtual void Tick(float DeltaTime) override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
@@ -27,14 +31,14 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Player")
 	APlayerStatManager* PlayerStats{};
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Game Management")
+	UGameManager* GameManager{};
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Player")
 	int health{};
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Player")
 	int hunger{};
-
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Game Management")
-	UGameManager* gameManager{};
 
 	UFUNCTION(BlueprintCallable, Category = "Player")
 	void RestoreHunger(int value);
@@ -47,4 +51,10 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Player")
 	void DepleteHealth(int value);
+
+	UFUNCTION(BlueprintCallable, Category = "Player")
+	void AddItem(AItem* Item);
+
+	UFUNCTION(BlueprintCallable, Category = "Player")
+	void ClearItems();
 };
