@@ -53,7 +53,7 @@ void UGameManager::DepleteHealth(int value)
 void UGameManager::RestoreHunger(int value)
 {
 	if (CurrentHunger + value > 100)
-		CurrentHunger += 100;
+		CurrentHunger = 100;
 	else
 		CurrentHunger += value;
 }

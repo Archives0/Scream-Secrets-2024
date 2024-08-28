@@ -18,4 +18,10 @@ protected:
 public:	
 	AItem();
 	virtual void Tick(float DeltaTime) override;
+
+	// Add icon variable
+	// Set icon based on item type
+	// Create item slot UI class
+	// Set UI icon on spawn
+	// Click to use items
 };
