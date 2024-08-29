@@ -14,6 +14,27 @@ enum class EGameState : uint8
 	Eating
 };
 
+USTRUCT(BlueprintType)
+struct FItemData
+{
+	GENERATED_BODY()
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Items")
+	EItemType FItemType{};
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Items")
+	UTexture2D* FIcon{};
+
+	FItemData()
+		: FItemType(EItemType::Milk), FIcon(nullptr){}
+
+	FItemData(EItemType itemType, UTexture2D* icon)
+	{
+		FItemType = itemType;
+		FIcon = icon;
+	}
+};
+
 /**
  * 
  */
@@ -42,6 +63,9 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Player")
 	TArray<AItem*> HeldItems{};
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Items")
+	TArray<FItemData> HeldItemData{};
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Player")
 	int CurrentHealth{};
