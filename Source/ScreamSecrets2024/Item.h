@@ -6,6 +6,17 @@
 #include "GameFramework/Actor.h"
 #include "Item.generated.h"
 
+UENUM(BlueprintType)
+enum class EItemType : uint8
+{
+	Milk,
+	MetalDetector,
+	Antidote,
+	Antacid,
+	Medicine,
+	MysteryLiquid
+};
+
 UCLASS()
 class SCREAMSECRETS2024_API AItem : public AActor
 {
@@ -18,6 +29,12 @@ protected:
 public:	
 	AItem();
 	virtual void Tick(float DeltaTime) override;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Item")
+	EItemType ItemType{};
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Item")
+	UTexture2D* Icon{};
 
 	// Add icon variable
 	// Set icon based on item type

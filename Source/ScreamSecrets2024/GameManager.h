@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Engine/GameInstance.h"
+#include "Item.h"
 #include "GameManager.generated.h"
 
 UENUM(BlueprintType)
