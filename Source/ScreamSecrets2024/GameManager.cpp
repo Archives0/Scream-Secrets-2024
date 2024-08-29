@@ -80,14 +80,12 @@ void UGameManager::ClearItems()
 
 void UGameManager::AddItems(AItem* item)
 {
-	if (HeldItems.Num() < 5)
+	if (HeldItemData.Num() < 5)
 	{
 		UE_LOG(LogTemp, Display, TEXT("Added item %s"), *item->GetName());
 
-		AItem newItem = AItem();
-		newItem.Icon = item->Icon;
-
-		HeldItems.Add(item);
+		FItemData ItemData(item->ItemType, item->Icon);
+		HeldItemData.Add(ItemData);
 	}
 	else
 		return;
